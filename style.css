@@ -1,0 +1,86 @@
+*{
+    margin: 0px;
+    overflow-x: hidden;
+}
+.section{
+    height: 100vh;
+    width: 100vw;
+    
+}
+#main{
+    margin: 0px;
+    background-color: black;
+}
+.subsecleft{
+    width: 30vw;
+    height: inherit;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 4vw;
+    margin-left: 10vw;
+}
+#one{
+    padding-top: calc(50vh - 4vw);
+    color: whitesmoke;
+    height: calc(50vh + 4vw);
+}
+.subsecright{
+    width: 70vw;
+    margin-top: -100vh;
+    margin-left: 30vw;
+    height: 100vh;
+    text-align: center;
+    background-image: url(assets/bg2.png);
+    background-position-y: center;
+    background-size: cover;
+
+}
+#one button:not(#scr){
+    outline: none;
+    font-family: 'Raleway', sans-serif;
+    border: none;
+    color: transparent!important;
+    font-size: 0.5vh!important;
+    background: linear-gradient(to right, firebrick 20%, purple);
+    width: 12vw;
+    margin-right: 4vw;
+    margin-left: 4vw;
+}
+#scr{
+    outline: none;
+    font-family: 'Raleway', sans-serif;
+    border: none;
+    font-size: 0.5vh!important;
+    background: linear-gradient(to right, firebrick 20%, purple);
+    width: 12vw;
+    margin-right: 4vw;
+    margin-left: 4vw;
+    color: white;
+    font-size: 1.5vw!important;
+    margin-top: 3vh;
+    border-radius: 5px;
+}
+#subh{
+    font-size: 2vh;
+    color: white;
+}
+#ctrl{
+    margin-top: -4.5vh;
+}
+#mobilehead{
+    display: none;
+    background-image: url(assets/bg4.png);
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+@media only screen and (max-width: 1024){
+    #main{
+        display: none;
+    }
+    #mobilehead{
+        display: block;
+    }
+}
