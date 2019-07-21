@@ -1,29 +1,127 @@
 <html>
     <head>
+        <script src="jquery.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
-        <link href="https://fonts.googleapis.com/css?family=Raleway:300&display=swap" rel="stylesheet"> 
-        <title>In School Navigation</title>
-
+        <title>
+            In School Navigation
+        </title>
     </head>
-    <body>
-        <div id="app">
-        <div id="main" class="section">
-            <div class="subsecleft" id="one">
-                <div id="ctrl"><span id="headtext">Nav/n</span><br>
-                <button></button><br>
-                <span id="subh"><br>Amity International School - 46 | A Project By - Sarthak Singhal</span>
-                <br><button id="scr">More</button></div>
-            </div>
-            <div class="subsecright" id="two"></div>
-        </div>
-        <div id="mobilehead">
-            <center><div id="scroll"></div></center>
-        </div>
-        <div id="second"></div>
-        <div id="mobilesecond"></div>
-        </div>
-        <script src="jquery.js"></script>
-        <script src="main.js"></script>
+    <body onload="login()">
+    <div id="first">
+        <div id="menu">
+            <div id="invisibleheader"></div>
+            <span id="title"><img src="logo.jpg" align="center">av/n</span>
+            <span id="mtitle">Nav/n</span>
+            <div id="contents">Amity International School - 46&nbsp;&nbsp;&nbsp;&nbsp;</div>
+    </div>
+    <div id="cont">
+    <div id="cont1"><img src="logo.png" class="circle" align="center"></div>
+    <img src="download.png" align="center" class="fb">
+    </div></div>
+    <div id="second"><br>
+      <span>Viewing As: </span><span id="gr"></span>&nbsp;&nbsp;<button style="visibility: hidden;" id="lou" onclick="logout()">Log Out</button>
+            <form name="formsearch" id="form"><br>
+                <label id="looo">Current Location: </label><span id="loc1"></span><br><br><br><br>
+                    <label>Choose Class: &nbsp;</label><select id="opt" onchange="load()">
+                        <option>Class1</option>
+                        <option>Class2</option>
+                        <option>Class3</option>
+                        <option>Class4</option>
+                        <option>Class5</option>
+                        <option>Class6</option>
+                        <option>Class7</option>
+                        <option>Class8</option>
+                        <option>Class9</option>
+                        <option>Class10</option>
+                        <option>Class11</option>
+                        <option>Class12</option>
+                        <option>Venues</option>
+                    </select>
+                    <select id="sec" style="display:none" onchange="inload()">
+                        
+                    </select>
+                </form><br>
+                <center><button id="sub" onclick="load()">Show Sections</button>
+                <button id="sub1" onclick="inload()" style="display:none">Search</button><br>
+                <table id="record">
+                    <tr id="here">
+                        <!-- <td id="appendhere" style="width:100vw;text-align: center;"></td> -->
+                        <br><br>
+                        <td id="loc" style="width:100vw;text-align: center;"></td>
+                    </tr>
+                </table><br><br><br><br>
+                <div id="spp"><span id="tipsection"></span></div><br>
+                <img id="blo"></center>
+
+    </div>
     </body>
+    <script>
+			var config = {
+			  apiKey: "AIzaSyCI1ih-G8-mnl63Tk6efRfQ5TXtsZEKhE8",
+			  authDomain: "classes-1c6ee.firebaseapp.com",
+			  databaseURL: "https://classes-1c6ee.firebaseio.com",
+			  projectId: "classes-1c6ee",
+			  storageBucket: "",
+			  messagingSenderId: "583257092799"
+			};
+			firebase.initializeApp(config);
+			const db = firebase.firestore();
+			
+		  </script>
+          <script src="app.js"></script>
+          <script>
+          function loc(){
+          navigator.geolocation.getCurrentPosition(function(location) {
+          var apikey = '88bc69c228a045a0b002210e980ef249';
+          var latitude = location.coords.latitude.toString();
+          var longitude = location.coords.longitude.toString();
+
+          var api_url = 'https://api.opencagedata.com/geocode/v1/json'
+
+  var request_url = api_url
+    + '?'
+    + 'key=' + apikey
+    + '&q=' + encodeURIComponent(latitude + ',' + longitude)
+    + '&pretty=1'
+    + '&no_annotations=1';
+
+  // see full list of required and optional parameters:
+  // https://opencagedata.com/api#forward
+
+  var request = new XMLHttpRequest();
+  request.open('GET', request_url, true);
+
+  request.onload = function() {
+    // see full list of possible response codes:
+    // https://opencagedata.com/api#codes
+
+    if (request.status == 200){ 
+      // Success!
+      var data = JSON.parse(request.responseText);
+      var x = data.results[0].formatted;
+      document.getElementById("loc1").innerHTML = x;
+
+    } else if (request.status <= 500){ 
+      // We reached our target server, but it returned an error
+                           
+      console.log("unable to geocode! Response code: " + request.status);
+      var data = JSON.parse(request.responseText);
+      console.log(data.status.message);
+    } else {
+      console.log("server error");
+
+    }
+  };
+
+  request.onerror = function() {
+    // There was a connection error of some sort
+    console.log("unable to connect to server");  
+  };
+
+  request.send();  // make the request
+    })
+}
+          </script>
 </html>
