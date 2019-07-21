@@ -13,6 +13,7 @@ html, body{
 #first, #second, #third{
     font-family: Raleway;
     height: auto;
+    min-height: 100vh;
     background-color: #191919;
     width: 100vw;
 }
