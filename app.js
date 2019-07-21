@@ -122,7 +122,7 @@ function ii(){
         }
 
     }
-    urll = "/master/assets/".concat(block).concat(".JPG");
+    urll = "https://raw.githubusercontent.com/sarthaksinghal712/insnav/master/assets/".concat(block).concat(".JPG");
     $("#blo").attr("src", urll);
     document.getElementById("blo").style.display = "block";
 
