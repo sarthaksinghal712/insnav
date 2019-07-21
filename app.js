@@ -122,7 +122,7 @@ function ii(){
         }
 
     }
-    urll = "assets/".concat(block).concat(".jpg");
+    urll = "/master/assets/".concat(block).concat(".JPG");
     $("#blo").attr("src", urll);
     document.getElementById("blo").style.display = "block";
 
